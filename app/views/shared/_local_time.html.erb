@@ -1,0 +1,5 @@
+<% if local_assigns[:datetime] %>
+  <%= local_time(local_assigns[:datetime], '%a %d %b %Y, %l:%M %P') %>
+<% elsif local_assigns[:time] %>
+  <%= local_time(local_assigns[:time], '%l:%M %P') %>
+<% end %>

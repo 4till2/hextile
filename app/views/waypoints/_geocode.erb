@@ -1,0 +1,19 @@
+<% if waypoint.nil? %>
+  <span>-- --</span>
+<% else %>
+  <a onclick="document.map.panTo({lat:<%= waypoint.latitude %>, lng: <%= waypoint.longitude %>})"
+     title="Latitude: <%= waypoint.latitude %>, Longitude: <%= waypoint.longitude %>"
+  >
+    <% if waypoint.geocode %>
+      <%= waypoint.geocode["city"] %>
+      <%= waypoint.geocode["state"] %>,
+      <%= waypoint.geocode["country"].strip %>
+    <% else %>
+      <%= waypoint.latitude.round(2) %>, <%= waypoint.longitude.round(2) %>
+    <% end %>
+    <%# if waypoint.elevation > 0 %>
+    <!--    Elevation <%#= waypoint.elevation %>-->
+    <%# end %>
+  </a>
+<% end %>
+

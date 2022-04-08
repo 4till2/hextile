@@ -1,0 +1,34 @@
+<div class="border-t border-dashed py-4">
+  <h2 class="font-extrabold text-3xl text-gray-700"><%= day[:date].strftime('%a %d %b %Y') %></h2>
+  <p class="text-gray-500 text-xl"><%= pluralize(day[:distance], 'mile') %></p>
+  <% if day[:waypoints] %>
+    <div class="my-2 flex overflow-x-scroll flex flex-row snap-x">
+      <%= render partial: 'waypoints/waypoint', collection: day[:waypoints] %>
+    </div>
+  <% end %>
+
+  <% if day[:posts] %>
+    <div class="my-2 flex overflow-x-scroll flex flex-row snap-x">
+      <div class="grid grid-flow-col grid-rows-1 gap-x-2">
+        <% day[:posts]&.each do |post| %>
+          <%= render 'posts/post', post: post %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if day[:media] %>
+    <div class="my-2 flex overflow-x-scroll flex flex-row snap-x">
+      <div class="grid grid-flow-col grid-rows-1 gap-x-2">
+        <% day[:media]&.each do |media| %>
+          <% if media[:type].include?('image') %>
+            <div class="w-48 mr-2 shrink-0">
+              <%= render 'media/media', media: media %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

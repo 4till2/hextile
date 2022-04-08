@@ -1,0 +1,15 @@
+<div class="p-4 w-full text-center  text-4xl text-green">
+ Confirm Email
+</div>
+<% if local_assigns[:success] %>
+  <div class="mx-auto">You have confirmed your email!</div>
+<% else %>
+  <div class="mx-auto">You may click the 'confirm' button in the email with subject "Confirm Email" to ensure safe delivery
+    of future emails.
+  </div>
+<% end %>
+
+
+<div class="my-8 text-center font-extrabold text-4xl text-green underline">
+  <%= link_to 'Home', root_path %>
+</div>

@@ -1,0 +1,13 @@
+.loader-text {
+    animation: animloader 1s ease-in infinite alternate;
+    color: rgba(2, 38, 67, 0.3);
+}
+
+@keyframes animloader {
+    0% {
+        filter: blur(0px);
+    }
+    100% {
+        filter: blur(8px);
+    }
+}

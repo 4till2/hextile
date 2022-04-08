@@ -1,0 +1,42 @@
+<div data-controller='modal-wrapper' class="flex">
+  <template data-modal-wrapper-target="template">
+    <%= render 'shared/modal', center: false do %>
+      <div class="flex text-lg text-sm md:text-xl ">
+        <p class="text-gray-500 font-medium no-wrap"><%= post&.metadata&.type&.capitalize %> entry </p>
+        <span class="text-gray-300 mx-1">&bull;</span>
+        <p class="text-gray-500 font-medium"><%= render 'shared/local_time', datetime: post&.external_created_at %></p>
+      </div>
+      <% if post.metadata.title %>
+        <h2 class="text-gray-900 font-medium">
+          <%= post.metadata.title %>
+        </h2>
+      <% end %>
+      <div class="h-full w-full text-xl">
+        <%= render 'posts/log', metadata: post.metadata.to_h %>
+        <div class="markdown-body text-2xl">
+          <%= post.content.html_safe %>
+        </div>
+      </div>
+    <% end %>
+  </template>
+  <button data-action='modal-wrapper#open' class="z-0 p-4 bg-gray-300/30 w-80 md:w-96 h-72  relative flex-shrink-0 snap-center overflow-hidden text-left">
+    <div class="flex text-xl">
+      <p class="text-gray-500 font-medium no-wrap text-xl"><%= post&.metadata&.type&.capitalize %> entry </p>
+      <span class="text-gray-300 mx-1">&bull;</span>
+      <p class="text-gray-500 font-medium text-xl"> <%= render 'shared/local_time', time: post&.external_created_at %></p>
+    </div>
+    <% if post.metadata.title %>
+      <h2 class="text-gray-900 font-medium">
+        <%= post.metadata.title %>
+      </h2>
+    <% end %>
+    <div class="h-full w-full">
+      <%= render 'posts/log', metadata: post.metadata.to_h %>
+      <div class="markdown-body overflow-hidden">
+        <%= post.content.html_safe %>
+      </div>
+      <div class="absolute bottom-0 text-xl left-0 right-0 w-11/12 text-center bg-gray-300/20 hover:bg-gray-400/20 transition-all text-gray-500 hover:text-gray-700 font-medium backdrop-blur px-2 py-1 mb-2 mx-auto rounded-lg ">Read
+      </div>
+    </div>
+  </button>
+</div>

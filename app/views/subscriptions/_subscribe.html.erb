@@ -1,0 +1,13 @@
+<%= turbo_frame_tag 'subscription_container' do %>
+  <% if local_assigns[:response].nil? %>
+    <%= form_with url: subscribe_path, method: :post do |form| %>
+      <div class="">
+        <%= form.label :email, "Email:" %>
+        <%= form.email_field :email, class: "rounded py-0 border-gray-500 bg-none outline-none focus:ring-0 focus:border-green" %>
+        <%= form.submit "Subscribe", class: 'px-1 mt-2 lg:mt-0 text-lg rounded-md bg-green text-soft-white cursor-pointer hover:bg-green/80' %>
+      </div>
+    <% end %>
+  <% else %>
+    <p><%= local_assigns[:message] %></p>
+  <% end %>
+<% end %>

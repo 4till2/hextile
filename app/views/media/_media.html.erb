@@ -1,0 +1,12 @@
+<div data-controller='modal-wrapper' class="flex">
+  <template data-modal-wrapper-target="template">
+    <%= render 'shared/modal', center: false do %>
+      <div class="h-full w-full bg-center bg-no-repeat bg-contain hover:scale-105"
+           style="background-image: url('<%= image_url( media[:url]) + '=w2048-h1024' %>')">
+      </div>
+    <% end %>
+  </template>
+  <button data-action='modal-wrapper#open' class="">
+    <%= image_tag media[:url] + '=w400-h400' %>
+  </button>
+</div>

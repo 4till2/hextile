@@ -1,0 +1,15 @@
+<div class="p-4 w-full text-center  text-4xl text-green">
+ Unsubscribe
+</div>
+<% if local_assigns[:success] %>
+  <div class="mx-auto">You have unsubscribed from any future emails.</div>
+<% else %>
+  <div class="mx-auto">You may click the 'unsubscribed' button at the bottom of any of my email's to unsubscribe from
+    future emails.
+  </div>
+<% end %>
+
+
+<div class="my-8 text-center font-extrabold text-4xl text-green underline">
+  <%= link_to 'Home', root_path %>
+</div>

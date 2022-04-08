@@ -1,0 +1,64 @@
+<div class="mx-auto w-full">
+  <span id="top"></span>
+  <div class="pb-8">
+    <div class="justify-center grid md:flex-row text-left gap-3 w-full items-start">
+      <div class="grid gap-3 grid-flow-row mr-0 md:mr-2">
+        <h1 class="text-gray-900">Real time waypoints, photos, logs, notes, and stats from Yosef's (upcoming) 2022
+          Pacific
+          Crest Trail thru hike.</h1>
+        <div class="flex w-full gap-2">
+          <div class="grid p-2 bg-gray-300/30 backdrop-blur rounded-md">
+            <p class="font-bold cursor-pointer text-teal-900 hover:text-teal-700 font-extrabold text-4xl">
+              <%= render 'waypoints/geocode', waypoint: @timeline&.waypoints&.last %>
+            </p>
+            <h3 class="text-gray-700 font-extrabold">Last Waypoint</h3>
+          </div>
+
+          <div class="grid p-2 mx-2 bg-gray-300/30 backdrop-blur rounded-md">
+            <p class="font-bold cursor-pointer text-teal-900 font-extrabold text-4xl">
+              <%= @details && @details[:distance].present? ? @details[:distance].round(0) : 0 %>
+            </p>
+            <h3 class="text-gray-700 font-extrabold">Miles walked</h3>
+          </div>
+
+          <div class="grid p-2 bg-gray-300/30 backdrop-blur rounded-md">
+            <p class="font-bold cursor-pointer text-teal-900 font-extrabold text-4xl">
+              <%= @details && @details[:rate][:total_minutes] ? (@details[:rate][:total_minutes] / 1440)&.round(0) : 0 %>
+            </p>
+            <h3 class="text-gray-700 font-extrabold">Nights camped</h3>
+          </div>
+        </div>
+      </div>
+      <%= render 'maps/main' %>
+    </div>
+
+    <div class=" mt-4 mx-auto flex flex-col snap-y snap-manditory">
+      <% @days.each do |day| %>
+        <div class="snap-start">
+          <%= render 'timeline/index', day: day %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="fixed right-4 bottom-2 grid grid-flow-col items-center gap-1 text-right justify-items-end content-end justify-end align-end text-lg">
+    <a href="https://instagram.com/4till2" target="_blank" class="p-1 cursor-pointer rounded-md text-gray-500 bg-soft-white/50 backdrop-blur hover:text-gray-900">@4till2</a>
+    <a href="/maps" target="_blank" class="p-1 cursor-pointer rounded-md text-gray-500 bg-soft-white/50 backdrop-blur hover:text-gray-900">maps</a>
+    <a onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="p-1 cursor-pointer rounded-md text-gray-500 bg-soft-white/50 backdrop-blur hover:text-gray-900">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
+      </svg>
+    </a>
+    <a onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});" class="p-1 cursor-pointer rounded-md text-gray-500 bg-soft-white/50 backdrop-blur hover:text-gray-900">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </a>
+
+  </div>
+  <div class="p-2 text-xl w-full rounded-md text-gray-500 bg-soft-white/50 backdrop-blur">
+    <%= render 'subscriptions/subscribe' %>
+  </div>
+  <span id="bottom"></span>
+
+</div>
