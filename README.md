@@ -1,5 +1,6 @@
 # Hextile
-
+ **Update:** I have since built a [new site](https://4till2.com) to better handle my needs. This is still a good starting point for similar projects.
+ 
 This is an application I created for background live journaling, tracking, and logging my Pacific Crest Trail thru hike.
 Much of it is custom built for my needs, but I took care to make it as extendable and customizable as possible. Anyone
 can fork and host it for themself by setting a few environment variables. Feel free to pr any efforts you make to
